@@ -7,9 +7,9 @@
   <div> 
   <FlashMessage></FlashMessage>
   <CRow>
-      <CCol sm="7">
+      <CCol class="shadow bg-white" style="border-radius: 20px;" sm="7">
         <CRow>
-          <CCol sm="6">
+          <CCol class="mt-3" sm="6">
             <div>
             Business Name<br>
             <model-list-select :list="BusinessGet?BusinessGet:[]"
@@ -21,7 +21,7 @@
             </model-list-select>
             </div> 
           </CCol>
-              <CCol sm="6">
+              <CCol class="mt-3" sm="6">
               <label for="complaintname">Presented Complaint:</label>
               <input list="complaintname" class="form-control" v-model="userinputs.name">
               <datalist id="complaintname">
@@ -74,9 +74,9 @@
               <CButton type="submit" class="float-right" color="primary"  @click="addNewComplaint" aria-pressed="true">Submit</CButton>
             </div>
       </CCol>
-      <CCol sm="5" class="border-top border-left border-right" v-if="userinputs.business"> 
-         <div class="text-primary border-bottom"><h4>Last submitted complaint</h4></div>
-         <h4>Name</h4><div class="text-warning border-bottom"><h5>{{ThisBusinessGet?ThisBusinessGet.name:"No complaints"}}</h5></div>
+      <CCol sm="5" class="shadow border-top border-left border-right bg-white" v-if="userinputs.business" style="border-radius: 20px;"> 
+         <div class="text-primary text-center border-bottom mt-3"><h4>Last submitted complaint</h4></div>
+         <h2 class="text-center">Name</h2><div class="text-center text-warning border-bottom"><h5>{{ThisBusinessGet?ThisBusinessGet.name:"No complaints"}}</h5></div>
          <h4>Details</h4><div class="text-success border-bottom"><h5>{{ThisBusinessGet?ThisBusinessGet.detail:"No complaints"}}</h5></div>
          <h4>Advice</h4><div class="text-warning border-bottom"><h5>{{ThisBusinessGet?ThisBusinessGet.advice:"No complaints"}}</h5></div>
          <h4>Status</h4><div class="text-success border-bottom"><h5>{{ThisBusinessGet?ThisBusinessGet.status:"No complaints"}}</h5></div><br>
