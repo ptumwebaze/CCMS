@@ -68,11 +68,12 @@
             Staff Name
                 <select :searchable="true" v-model="userinputs.staff_id" style="width:635px; height:35px; margin-bottom:20px; margin-top:10px">
                   <option v-for="(staff, index) in staffGet" :key="index" v-bind:value="staff.id">{{ staff.name }}</option>
-                </select> 
-            </div> 
-             <div slot="footer" class="w-100">
-              <CButton type="submit" class="float-right" color="primary"  @click="addNewComplaint" aria-pressed="true">Submit</CButton>
+                </select>
             </div>
+            <div slot="footer" class="w-100">
+              <CButton type="submit" class="float-right mb-3 mt-5" color="primary" @click="addNewComplaint" aria-pressed="true">Submit</CButton>
+            </div> 
+            
       </CCol>
       <CCol sm="5" class="shadow border-top border-left border-right bg-white" v-if="userinputs.business" style="border-radius: 20px;"> 
          <div class="text-primary text-center border-bottom mt-3"><h4>Last submitted complaint</h4></div>
