@@ -49,4 +49,16 @@ delStaff({dispatch},payload){
      dispatch('notification/error',msg,{root:true});
     })
 },
+
+// Enrol Staff
+enrolstaff({dispatch},payload){
+    axios.post(`enrolstaff/${payload.id}`).then(()=>{
+    dispatch('fetchStaff')
+    let msg ="Staff member enrolled successfully"
+    dispatch('notification/success',msg,{root:true});
+    }).catch(error =>{
+        let msg ="Error in enrolled Staff member, please try again later"
+     dispatch('notification/error',msg,{root:true});
+    })
+},
 };
