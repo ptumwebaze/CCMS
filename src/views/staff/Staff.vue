@@ -123,7 +123,7 @@
  </CModal>
  <!-- Edit staff modal end -->
 
-<!-- Delete_Complaint Modal -->
+<!-- Delete_Staff Modal -->
  <CModal
       title="Delete Staff"
       :show.sync="del_staff"
@@ -140,7 +140,26 @@
               <CButton style="margin-left:320px" color="primary"  @click="deletethistaff" aria-pressed="true">Delete</CButton>
             </div>
  </CModal>
- <!-- Delete_Complaint Modal End -->
+ <!-- Delete_Staff Modal End -->
+
+ <!-- Enrol Staff Modal -->
+ <CModal
+      title="Enrol Staff"
+      :show.sync="enrol_staff"
+      color="warning"
+      footer="false"
+    >      
+    <CRow>
+      <CCol sm="12">
+        <h3>Your are enrolling staff {{enrolData.name}} as a user</h3>
+      </CCol>
+    </CRow>
+             <div slot="footer" class="w-100">
+              <CButton color="danger"  @click="enrol_staff = false" aria-pressed="true">Cancel</CButton>
+              <CButton style="margin-left:320px" color="primary"  @click="enrolthistaff" aria-pressed="true">Enrol</CButton>
+            </div>
+ </CModal>
+ <!-- Enrol Staff Modal End -->
 
     <CRow>
       
@@ -158,6 +177,8 @@
           <td>
             <CButton color="success"  @click="editstaff(item)">Edit</CButton>
             <CButton color="danger"  @click="delstaff(item)">Delete</CButton>
+            <CButton v-if="item.status == 2" color="light"  @click="enrolstaff(item)" disabled>Enrolled</CButton>
+            <CButton v-else color="warning"  @click="enrolstaff(item)">Enroll</CButton>
           </td>
         </template>
         </CDataTable>
@@ -175,6 +196,7 @@ export default {
       add_staff: false,
       edit_staff: false,
       del_staff: false,
+      enrol_staff: false,
       userinputs:{
                 name:"",
                 email:"",
@@ -184,7 +206,12 @@ export default {
       editData:{},
       delData:{
         id:"",
-      },  
+      },
+      
+      enrolData:{
+        id:"",
+        name:""
+      },
     }
   },
   props:{
@@ -211,6 +238,7 @@ export default {
     ...mapActions({
          FetchStaff:"staff/fetchStaff",
          AddStaff:"staff/addstaff",
+         Enrol_Staff:"staff/enrolstaff",
          Edit_Staff:"staff/updatestaff",
          Delete_Staff:"staff/delStaff"
      }),
@@ -228,11 +256,22 @@ export default {
         this.delData.id = item.id		   
 			  this.delData.name = item.name
         this.del_staff = true
-      },  
+      },
+      
+      enrolstaff(item){      
+        this.enrolData.id = item.id		   
+			  this.enrolData.name = item.name
+        this.enrol_staff = true
+      },
     deletethistaff(){
       this.Delete_Staff(this.delData),
 			this.del_staff = false;
-    }, 
+    },
+    
+    enrolthistaff(){
+      this.Enrol_Staff(this.enrolData),
+			this.enrol_staff = false;
+    },
     editstaff(item){
       let editObject ={
                 name:item.name,

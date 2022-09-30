@@ -14,8 +14,8 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'vue-search-select/dist/VueSearchSelect.css'
 
-// axios.defaults.baseURL = 'https://ccms.nugsoftdemos.net/api'
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api'
+axios.defaults.baseURL = 'https://ccms.nugsoftdemos.net/api'
+// axios.defaults.baseURL = 'http://127.0.0.1:8000/api'
 Vue.config.performance = true
 // Make BootstrapVue available throughout your project
 Vue.use(BootstrapVue)
